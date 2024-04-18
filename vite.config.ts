@@ -2,6 +2,7 @@
 
 import { defineConfig } from 'vite';
 import analog, { PrerenderContentFile } from '@analogjs/platform';
+import { PrerenderRoute } from 'nitropack';
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
@@ -28,6 +29,9 @@ export default defineConfig(({ mode }) => ({
               return `/help/${slug}`;
             },
           },
+        ],
+        postRenderingHooks: [
+          async (route: PrerenderRoute) => console.log('route is ', route),
         ],
       },
     }),
