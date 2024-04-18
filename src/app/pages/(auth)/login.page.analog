@@ -1,0 +1,35 @@
+<script lang="ts">
+  import { inject, signal, DestroyRef } from '@angular/core';
+  import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
+  import { tap } from 'rxjs';
+  import { AuthService } '../../services/';
+
+  defineMetadata({
+    providers: [AuthService]
+  })
+
+  const authService = inject(AuthService);
+  const destroyRef = inject(DestroyRef);
+  const loading = signal(false);
+
+  const login = (credentials: { username: string; password: string }) => {
+    loading.set(true);
+    authService.login(credentials).
+      pipe(
+        takeUntilDestroyed(destroyRef),
+        tap(() => loading.set(false)))
+      .subscribe()
+  }
+</script>
+
+<template>
+  <div>
+  @if(!loading()) {
+    <button (click)="login({ username: '', password: '' })">
+      login here
+    </button>
+  } @else {
+      <div>loading</div>
+    }
+  </div>
+</template>
