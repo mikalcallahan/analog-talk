@@ -34,6 +34,11 @@ export default defineConfig(({ mode }) => ({
           async (route: PrerenderRoute) => console.log('route is ', route),
         ],
       },
+      vite: {
+        experimental: {
+          supportAnalogFormat: true,
+        },
+      },
     }),
   ],
   test: {
