@@ -20,6 +20,14 @@
         tap(() => loading.set(false)))
       .subscribe()
   }
+
+  onInit(() => {
+    console.log('Login init')
+  })
+
+  onDestroy(() => {
+    console.log('Login destroy')
+  })
 </script>
 
 <template>
