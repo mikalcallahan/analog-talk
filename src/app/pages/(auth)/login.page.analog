@@ -2,13 +2,8 @@
   import { inject, signal, DestroyRef } from '@angular/core';
   import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
   import { tap } from 'rxjs';
-  import { AuthService } '../../services/';
-  import LoginForm from '../../components/auth/login-form.analog';
-
-  defineMetadata({
-    providers: [AuthService],
-    imports: [LoginForm]
-  })
+  import { AuthService } '../../services/' with { analog: 'providers'};
+  import LoginForm from '../../components/auth/login-form.analog' with { analog: 'imports' };
 
   const authService = inject(AuthService);
   const destroyRef = inject(DestroyRef);
@@ -32,12 +27,10 @@
   })
 </script>
 
-<template>
-  <div>
+<template style="display: block;">
   @if(!loading()) {
     <LoginForm (onSubmitForm)="login($event)" />
   } @else {
     <div>loading</div>
-    }
-  </div>
+  }
 </template>
