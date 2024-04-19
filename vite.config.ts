@@ -36,7 +36,9 @@ export default defineConfig(({ mode }) => ({
       },
       vite: {
         experimental: {
-          supportAnalogFormat: true,
+          supportAnalogFormat: {
+            include: ['src/app/components/auth/**/*'],
+          },
         },
       },
     }),

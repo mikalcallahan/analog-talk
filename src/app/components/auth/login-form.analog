@@ -1,0 +1,10 @@
+<script lang="ts">
+  import { output } from '@angular/core'
+  const onSubmitForm = output();
+</script>
+
+<template>
+<button (click)="onSubmitForm.emit({ username: '', password: '' })">
+  login here
+</button>
+</template>

@@ -3,9 +3,11 @@
   import { takeUntilDestroyed } from '@angular/core/rxjs-interop'
   import { tap } from 'rxjs';
   import { AuthService } '../../services/';
+  import LoginForm from '../../components/auth/login-form.analog';
 
   defineMetadata({
-    providers: [AuthService]
+    providers: [AuthService],
+    imports: [LoginForm]
   })
 
   const authService = inject(AuthService);
@@ -33,11 +35,9 @@
 <template>
   <div>
   @if(!loading()) {
-    <button (click)="login({ username: '', password: '' })">
-      login here
-    </button>
+    <LoginForm (onSubmitForm)="login($event)" />
   } @else {
-      <div>loading</div>
+    <div>loading</div>
     }
   </div>
 </template>
