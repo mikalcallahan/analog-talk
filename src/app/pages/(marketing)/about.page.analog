@@ -1,0 +1,17 @@
+<script lang="ts">
+import { RouterLink } from '@angular/router' with { analog: 'imports'};
+
+const framework = 'Angular';
+</script>
+
+<template lang="md">
+## About Analog
+
+Analog is a meta-framework for {{ framework }}.
+
+<a routerLink="/contact">Go to contact page (with `routerLink`)</a>
+
+or
+
+[Back Home (with a standard markdown link)](./)
+</template>
