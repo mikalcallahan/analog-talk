@@ -1,3 +1,5 @@
+// src/app/pages/help/(message-list).page.ts
+
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { injectContentFiles } from '@analogjs/content';
@@ -6,7 +8,6 @@ export interface MessageAttributes {
   title: string;
   slug: string;
   description: string;
-  coverImage: string;
 }
 
 @Component({
