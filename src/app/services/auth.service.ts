@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { delay, of, tap } from 'rxjs';
+import { catchError, tap, throwError } from 'rxjs';
 
 @Injectable()
 export class AuthService {
@@ -14,6 +14,9 @@ export class AuthService {
       .post('http://localhost:4200/api/v1/auth/login', {
         credentials,
       })
-      .pipe(tap((value) => console.log('response is ', value)));
+      .pipe(
+        tap((value) => console.log('response is ', value)),
+        catchError((error) => throwError(() => error)),
+      );
   }
 }
