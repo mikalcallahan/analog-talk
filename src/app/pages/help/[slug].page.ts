@@ -10,7 +10,6 @@ import { MessageAttributes } from './(messages-list).page';
   template: `
     @if (message$ | async; as message) {
       <ng-container>
-        <h1>{{ message.attributes.title }}</h1>
         <analog-markdown [content]="message.content" />
       </ng-container>
     }
